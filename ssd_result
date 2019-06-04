@@ -1,0 +1,31 @@
+ints = 1
+Maintaining 10 concurrent writes of 1048576 bytes to objects of size 1048576 for up to 10 seconds or 0 objects
+Object prefix: benchmark_data_mon_29645
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0      10        10         0         0         0           -           0
+    1      10       128       118   117.906       118   0.0924014   0.0802823
+    2      10       189       179   89.4558        61    0.167996    0.111032
+    3      10       243       233   77.6369        54    0.213112    0.122801
+    4      10       305       295   73.7258        62    0.148993    0.132992
+    5      10       369       359   71.7788        64    0.104498    0.138254
+    6      10       425       415   69.1475        56    0.196804    0.142146
+    7      10       490       480   68.5534        65    0.083831    0.145135
+    8      10       553       543   67.8579        63   0.0232704    0.146931
+    9      10       608       598   66.4284        55    0.198173    0.148872
+   10      10       668       658   65.7845        60    0.131907    0.150489
+Total time run:         10.073
+Total writes made:      669
+Write size:             1048576
+Object size:            1048576
+Bandwidth (MB/sec):     66.415
+Stddev Bandwidth:       18.7368
+Max bandwidth (MB/sec): 118
+Min bandwidth (MB/sec): 54
+Average IOPS:           66
+Stddev IOPS:            18
+Max IOPS:               118
+Min IOPS:               54
+Average Latency(s):     0.150555
+Stddev Latency(s):      0.060142
+Max latency(s):         0.310966
+Min latency(s):         0.0213948
