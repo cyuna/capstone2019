@@ -1,0 +1,74 @@
+//////////mon ssh/////////
+hostnamectl set-hostname mon //host name change
+sudo vi /etc/hosts //add ip mpn,osd,osd1,osd2
+sudo vi /etc/ssh/sshd_config // change password config yes 
+sudo vi ~/.ssh/config  
+//////////
+Host mon
+        Hostname mon
+        User ubuntu
+
+Host osd
+        Hostname osd
+        User ubuntu
+//////////////
+ssh-keygen
+cat id_rsa.pub
+ssh-copy-id osd
+ssh-copy-id osd1
+ssh-copy-id osd2
+
+
+//////////osd ssh/////////
+hostnamectl set-hostname osd //host name change
+sudo vi /etc/hosts //add ip mpn,osd,osd1,osd2
+sudo vi /etc/ssh/sshd_config // change password config yes
+sudo vi ~/.ssh/authorized_key //add mon's id_rsa.pub
+ssh-copy-id osd
+ssh-copy-id osd1
+ssh-copy-id osd2
+
+
+///////install ceph(osd,mon)////////
+#wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
+#echo deb https://download.ceph.com/debian-luminous/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
+#sudo apt update
+#sudo apt install ceph
+#sudo apt install ceph-deploy
+#sudo apt install ntp
+#sudo apt install openssh-server
+
+/////////mon////////////
+#ceph-deploy new mon
+#ceph-deploy install mon
+#ceph-deploy mon create-initial
+#ceph-deploy admin mon osd1,osd2,osd3
+#ceph-deploy mgr create mon
+
+//////////osd/////////////
+# ceph-deploy new osd
+# ceph-deploy new osd1
+# ceph-deploy new osd2
+# sudo su
+#fdisk –l
+
+//////////mon////////////
+#ceph-deploy osd create --data /dev/xvdd ods
+#ceph-deploy osd create --data /dev/xvdb od1
+#ceph-deploy osd create --data /dev/xvdc od2
+#sudo ceph –s
+#sudo chmod +r /etc/ceph/ceph.client.admin.keyring
+#ceph status
+
+/////////benchmark////////
+ceph osd pool create scbench 30 30
+ceph osd pool set scbench size 1
+ceph osd pool set scbench size 3
+rados lspools
+rados bench -p scbench 10 write -b 1048576 -t 10 --no-cleanup
+
+////////if want delete pool////////
+ sudo vi /etc/ceph/ceph.conf
+ add mon_allow_pool_delete = true
+ ceph osd pool delete scbench scbench --yes-i-really-really-mean-it
+ systemctl restart ceph-mon.target
