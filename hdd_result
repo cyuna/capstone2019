@@ -1,0 +1,32 @@
+hints = 1
+Maintaining 10 concurrent writes of 1048576 bytes to objects of size 1048576 for up to 10 seconds or 0 objects
+Object prefix: benchmark_data_mon_19431
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0      10        10         0         0         0           -           0
+    1      10        81        71   70.9292        71    0.276063    0.109942
+    2      10       131       121   60.4595        50    0.132634    0.150229
+    3      10       179       169   56.3034        48    0.149096    0.171762
+    4      10       231       221   55.2245        52   0.0132687    0.173286
+    5      10       275       265   52.9783        44   0.0441764    0.187316
+    6      10       316       306   50.9805        41     0.30411    0.192222
+    7      10       368       358   51.1243        52   0.0397772    0.189514
+    8      10       425       415   51.8569        57   0.0476632    0.189733
+    9      10       471       461    51.205        46    0.359809    0.191565
+   10      10       520       510    50.983        49   0.0254084    0.192419
+Total time run:         10.0934
+Total writes made:      521
+Write size:             1048576
+Object size:            1048576
+Bandwidth (MB/sec):     51.6181
+Stddev Bandwidth:       8.34
+Max bandwidth (MB/sec): 71
+Min bandwidth (MB/sec): 41
+Average IOPS:           51
+Stddev IOPS:            8
+Max IOPS:               71
+Min IOPS:               41
+Average Latency(s):     0.193717
+Stddev Latency(s):      0.146554
+Max latency(s):         0.734337
+Min latency(s):         0.0132687
+ubuntu@mon:~$
